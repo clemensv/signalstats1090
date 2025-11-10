@@ -31,5 +31,5 @@ signalstats1090 = "signalstats1090.signalstats1090:main"
 write_to = "signalstats1090/_version.py"
 
 [tool.poetry.dev-dependencies]
-pytest-cov = "^5.0.0"
+pytest-cov = "^7.0.0"
 
