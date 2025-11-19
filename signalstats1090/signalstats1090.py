@@ -127,8 +127,9 @@ def expire_min_rssi(now: float) -> None:
         _, bearing, rssi = MIN_RSSI_TIMESTAMPS.popleft()
         if MIN_RSSI_BY_BEARING[bearing] == rssi:
             # Recompute the minimum RSSI for this bearing
+            # Create a snapshot to avoid "deque mutated during iteration" error
             MIN_RSSI_BY_BEARING[bearing] = min(
-                (r for t, b, r in MIN_RSSI_TIMESTAMPS if b == bearing),
+                (r for t, b, r in list(MIN_RSSI_TIMESTAMPS) if b == bearing),
                 default=float(0)
             )
 
